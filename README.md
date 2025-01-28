@@ -15,22 +15,22 @@ authpher
 
 
 # What is that?
-Authpher performs users identification, authentication, and authorization acting as middleware, and
-behind the scene using your actual implementation.
+Authpher performs users identification, authentication, and authorization acting as middleware, using your actual implementation
+behind the scenes.
 
-## How it works?
-Idea is simple. You implement 3 interfaces:
+## How does it work?
+The idea is simple. You implement 3 interfaces:
 - `AuthUser` - provides user ID and auth hash for certain user
 - `AuthnBackend` - authenticates user using credentials 
 - `AuthzBackend` - authorizes users by providing its permissions 
 
-After that, use `Auth` middleware for all routes where you want authenticate users, and
-use `PermissionRequired` middleware for all routes you want to protect .
+After that, use `Auth` middleware for all routes where you want to authenticate users, and
+use `PermissionRequired` middleware for all routes you want to protect.
 
 Middlewares for http go package and [gin](https://github.com/gin-gonic/gin) framework are provided as adapters.
 You also need session manager for authpher to work, so you can use your custom or just go with
 `github.com/39george/authpher/sessions/ginsessions` for [gin](https://github.com/gin-gonic/gin), or `github.com/39george/authpher/sessions/httpsessions` for go http,
-both use [scs](https://github.com/alexedwards/scs) as session manager.
+both are using [scs](https://github.com/alexedwards/scs) as a session manager.
 
 # Installation
 To install, run:
