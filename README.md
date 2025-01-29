@@ -61,7 +61,7 @@ import (
 )
 
 // Example user type
-type User struct {
+type TestUser struct {
 	ID           int32
 	Username     string
 	PasswordHash string
