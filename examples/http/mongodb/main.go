@@ -25,7 +25,7 @@ import (
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 
-	"authpherExamples/common"
+	"github.com/39george/authpher/examples/common"
 )
 
 type User struct {

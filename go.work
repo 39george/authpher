@@ -1,8 +1,0 @@
-go 1.23.2
-
-use (
-    ./
-    ./adapters/authgin
-    ./sessions/ginsessions
-    ./sessions/httpsessions
-)
