@@ -45,7 +45,6 @@ func PermissionRequired[P comparable, C any](permission P) gin.HandlerFunc {
 			}
 			return
 		}
-		c.Set(authpher.AuthContextString, &authSession)
 		c.Next()
 	}
 }
