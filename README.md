@@ -230,3 +230,5 @@ func runServer(permission string) (net.Addr, error) {
 }
 ```
 See [full mongodb example](https://github.com/39george/authpher/blob/main/examples/http/mongodb/main.go)
+
+Also you can read about using authpher with postgres & redis in my article at [dev.to](https://dev.to/39george/user-authentication-in-go-nm7)
