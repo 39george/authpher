@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net"
 	"net/http"
 	"testing"
@@ -80,6 +81,8 @@ func runServer(permission string) (net.Addr, error) {
 	protectedMux.HandleFunc("/testpath", func(w http.ResponseWriter, r *http.Request) {
 		defer r.Body.Close()
 		w.WriteHeader(http.StatusOK)
+		// Ensure handler was called
+		w.Write([]byte{1, 2, 3})
 	})
 	protectedHandler := authttp.PermissionRequired[string, testbackend.TestCredentials](permission)(protectedMux)
 
@@ -131,6 +134,12 @@ func TestAuthorizedAccessAllowed(t *testing.T) {
 	req = fmt.Sprintf("http://%s/protected/testpath", addr.String())
 	resp, err = webClient.Get(req)
 	assert.NoError(err)
+
+	// Ensure last handler was called
+	respBody, err := io.ReadAll(resp.Body)
+	assert.NoError(err)
+	assert.Equal([]byte{1, 2, 3}, respBody)
+
 	defer resp.Body.Close()
 	assert.Equal(http.StatusOK, resp.StatusCode)
 }

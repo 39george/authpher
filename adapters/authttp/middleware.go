@@ -63,6 +63,7 @@ func PermissionRequired[P comparable, C any](permission P) func(http.Handler) ht
 				}
 				return
 			}
+			next.ServeHTTP(w, r)
 		})
 	}
 }
